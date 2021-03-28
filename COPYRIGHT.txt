@@ -1,0 +1,4 @@
+Copyright © 2021 by stud-stock
+
+This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+A copy of the license is attached in the LICENSE.txt file.
