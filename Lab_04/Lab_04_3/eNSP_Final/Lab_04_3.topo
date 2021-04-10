@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UNICODE" ?>
+<topo version="1.3.00.100">
+    <devices>
+        <dev id="E02F3E55-E051-48ec-9725-3D2B88CB458A" name="LeftBottomAR" poe="0" model="AR1220" settings="" system_mac="00-E0-FC-97-61-B3" com_port="2000" bootmode="0" cx="48.000000" cy="279.000000" edit_left="75" edit_top="333">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="GE" count="2" />
+                <interface sztype="Ethernet" interfacename="Ethernet" count="8" />
+            </slot>
+        </dev>
+        <dev id="C67CD9BB-408C-4e15-BD8A-8B534E7F9C34" name="LeftAR" poe="0" model="AR1220" settings="" system_mac="00-E0-FC-23-19-DA" com_port="2001" bootmode="0" cx="48.000000" cy="42.000000" edit_left="77" edit_top="26">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="GE" count="2" />
+                <interface sztype="Ethernet" interfacename="Ethernet" count="8" />
+            </slot>
+        </dev>
+        <dev id="67946AFA-8CE4-4b19-974F-CD28A9A7EA39" name="MiddleAR" poe="0" model="AR1220" settings="" system_mac="00-E0-FC-D6-1E-2B" com_port="2002" bootmode="0" cx="216.000000" cy="43.000000" edit_left="245" edit_top="27">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="GE" count="2" />
+                <interface sztype="Ethernet" interfacename="Ethernet" count="8" />
+            </slot>
+        </dev>
+        <dev id="4BB0E788-DF19-4c7d-8A5A-F6A8A263D003" name="RightAR" poe="0" model="AR1220" settings="" system_mac="00-E0-FC-91-21-CA" com_port="2003" bootmode="0" cx="382.000000" cy="41.000000" edit_left="409" edit_top="25">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="GE" count="2" />
+                <interface sztype="Ethernet" interfacename="Ethernet" count="8" />
+            </slot>
+        </dev>
+        <dev id="CE02FCF3-A96A-495c-9A31-BA25F14FAAA3" name="RightBottomAR" poe="0" model="AR1220" settings="" system_mac="00-E0-FC-15-5A-A4" com_port="2004" bootmode="0" cx="384.000000" cy="278.000000" edit_left="411" edit_top="332">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="GE" count="2" />
+                <interface sztype="Ethernet" interfacename="Ethernet" count="8" />
+            </slot>
+        </dev>
+    </devices>
+    <lines>
+        <line srcDeviceID="E02F3E55-E051-48ec-9725-3D2B88CB458A" destDeviceID="C67CD9BB-408C-4e15-BD8A-8B534E7F9C34">
+            <interfacePair lineName="Copper" srcIndex="0" srcBoundRectIsMoved="1" srcBoundRect_X="75.000000" srcBoundRect_Y="262.816223" srcOffset_X="6.000000" srcOffset_Y="0.000000" tarIndex="1" tarBoundRectIsMoved="1" tarBoundRect_X="75.000000" tarBoundRect_Y="112.183769" tarOffset_X="6.000000" tarOffset_Y="0.000000" />
+        </line>
+        <line srcDeviceID="4BB0E788-DF19-4c7d-8A5A-F6A8A263D003" destDeviceID="CE02FCF3-A96A-495c-9A31-BA25F14FAAA3">
+            <interfacePair lineName="Copper" srcIndex="1" srcBoundRectIsMoved="1" srcBoundRect_X="409.364410" srcBoundRect_Y="111.182228" srcOffset_X="-51.000000" srcOffset_Y="1.000000" tarIndex="0" tarBoundRectIsMoved="1" tarBoundRect_X="410.635590" tarBoundRect_Y="261.817780" tarOffset_X="-52.000000" tarOffset_Y="0.000000" />
+        </line>
+        <line srcDeviceID="C67CD9BB-408C-4e15-BD8A-8B534E7F9C34" destDeviceID="67946AFA-8CE4-4b19-974F-CD28A9A7EA39">
+            <interfacePair lineName="Copper" srcIndex="0" srcBoundRectIsMoved="1" srcBoundRect_X="118.182999" srcBoundRect_Y="69.257042" srcOffset_X="-16.000000" srcOffset_Y="7.000000" tarIndex="0" tarBoundRectIsMoved="1" tarBoundRect_X="199.817001" tarBoundRect_Y="69.742958" tarOffset_X="-30.000000" tarOffset_Y="7.000000" />
+        </line>
+        <line srcDeviceID="67946AFA-8CE4-4b19-974F-CD28A9A7EA39" destDeviceID="4BB0E788-DF19-4c7d-8A5A-F6A8A263D003">
+            <interfacePair lineName="Copper" srcIndex="1" srcBoundRectIsMoved="1" srcBoundRect_X="286.180634" srcBoundRect_Y="69.479752" srcOffset_X="-17.000000" srcOffset_Y="7.000000" tarIndex="0" tarBoundRectIsMoved="1" tarBoundRect_X="365.819366" tarBoundRect_Y="68.520248" tarOffset_X="-30.000000" tarOffset_Y="8.000000" />
+        </line>
+    </lines>
+    <shapes />
+    <txttips />
+</topo>
