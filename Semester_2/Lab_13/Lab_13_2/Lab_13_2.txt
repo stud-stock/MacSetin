@@ -1,0 +1,92 @@
+1. Загрузить ранее сохраненную топологию(1).
+Составляющие процесса настройки IPSec соединения:
+- ACL, описывающий трафик, подлежащий шифрованию
+- Proposal (заявку), задающую желаемые алгоритмы шифрования и аутентификации
+- SA - security association - структура, описывающая настройки одноноправленного IPSec 
+соединения (адреса отправителя/получателя, ключ, заявку, индекса параметров 
+безопасности - Security Parameters Index, SPI, тип IPSec сервиса - AH/ESP)
+- Policy - политика, содержащее все вышеперечисленное.
+
+2. Настроить на АR1 ACL, описывающий "интересный" трафик:
+[Huawei]acl number 3000 
+[Huawei-acl-adv-3000]rule permit ip source 192.N.0.0 0.0.0.255 destination 192.N.1.0 0.0.0.255
+[Huawei-acl-adv-3000]rule permit ip source 192.N.0.0 0.0.0.255 destination 192.N.2.0 0.0.0.255
+[Huawei-acl-adv-3000]rule deny ip source any destination any
+
+3. Настроить на AR1 заявку:
+[Huawei]ipsec proposal VPN 
+[Huawei-ipsec-proposal-VPN]esp authentication-algorithm sha1
+[Huawei-ipsec-proposal-VPN]esp encryption-algorithm 3des 
+
+- обратить внимание (нажав ?) на поддерживаемые алгоритмы и длины ключей
+
+4. Выполнить просмотр заявок:
+[Huawei]display ipsec proposal 
+
+- обратить внимание на режим инкапсуляции (Tunnel) - это дефолтный режим работы IPSec
+
+5. Настроить IPSec Policy на AR1 (VPN - имя, 1 - порядковый номер), SA :
+[Huawei]ipsec policy VPN 1 manual 
+[Huawei-ipsec-policy-manual-VPN-1]security acl 3000  
+[Huawei-ipsec-policy-manual-VPN-1]proposal VPN
+[Huawei-ipsec-policy-manual-VPN-1]tunnel local 20.0.N.1
+[Huawei-ipsec-policy-manual-VPN-1]tunnel remote 20.0.N.6
+[Huawei-ipsec-policy-manual-VPN-1]sa spi outbound esp 12345
+[Huawei-ipsec-policy-manual-VPN-1]sa spi inbound esp 54321
+[Huawei-ipsec-policy-manual-VPN-1]sa string-key outbound esp simple Password
+[Huawei-ipsec-policy-manual-VPN-1]sa string-key inbound esp simple Password
+
+6. Просмотр IPSec политик:
+display ipsec policy
+
+7. Применить политику к интерфейсу:
+[Huawei]interface g0/0/1
+[Huawei-GigabitEthernet0/0/1]ipsec policy VPN
+
+8. Команды получения информации об IPSec:
+[Huawei]display ipsec interface brief
+[Huawei]display ipsec sa
+
+9. Выполнить аналогичные настройки на AR3 (c учетом отличных IP-адресов и номеров SPI)
+
+10. Включить захват пакетов на интерфейсе AR1 в сторону AR3 и выполнить:
+- ping 20.0.N.6
+- успешно? (да)
+- трафик шифрован? (нет)
+- почему?
+
+- ping 192.N.1.1
+- успешно? (нет)
+- пакеты передавались? (нет)
+- почему?
+
+- выполнить просмотр ACL
+- какие правила срабатывали?
+- почему?
+
+12. Выполнить те же команды с PC1
+- что изменилось в результатах?
+- почему?
+
+13. На AR1 настроить статический маршрут к 192.N.1.0/24 сети
+- повторить пункт 12.
+- обратить внимание на адрес получателя шифрованных пакетов во втором случае
+(т.е. ACL сработал, IPSec policy применилась, трафик туннелировался и виден
+внешний IP заголовок с адресом получателя конечной точки туннеля, несмотря на 
+то, что на AR2 нет маршрутов к сетям LAN2)
+
+14. На AR3 настроить статический маршрут к 192.N.0.0/24 сети
+- должна появится связность из LAN1 к 192.N.1.1
+
+15. Настроить статическую маршрутизацию для всех частных сетей на АR1, АR3 и АR4 
+(на АR2 не нужно, это транзитный маршрутизатор провайдера/интернета, частные сети там не маршрутизируются)
+
+- убедиться в том, что пакеты успешно проходят до РС2
+- убедиться в том, что пакеты шифруются на участке АR1-АR3
+
+16. Выполнить трассировку маршрута с РС1 до РС2
+
+- почему нет информации о втором хопе?
+
+ТАКИМ ОБРАЗОМ, IPSec ПРИГОДЕН ДЛЯ ШИФРОВАНИЯ ТРАФИКА МЕЖДУ САЙТАМИ В ТУННЕЛЬНОМ РЕЖИМЕ, 
+НО ЧЕРЕЗ ТАКОЙ ТУННЕЛЬ НЕ РАБОТАЕТ ДИНАМИЧЕСКАЯ МАРШРУТИЗАЦИЯ

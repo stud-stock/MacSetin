@@ -43,3 +43,9 @@
 - Lab_08_3: области в OSPFv3
 - Lab_08_4: статическая IPv4-маршрутизация; RIPv2; OSPF; импорт маршрутов
 - Lab_08_5: статическая IPv6-маршрутизация; RIPng; OSPFv3; импорт маршрутов
+
+## Lab_13: VPN
+
+- Lab_13_1: GRE
+- Lab_13_2: IPsec
+- Lab_13_3: GRE over IPsec
