@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UNICODE" ?>
 <topo version="1.3.00.100">
     <devices>
-        <dev id="96BBB512-DC42-4317-9174-5A5EB32AC9D5" name="LeftAR" poe="0" model="AR1220" settings="" system_mac="00-E0-FC-C4-69-BD" com_port="2000" bootmode="1" cx="32.000000" cy="29.000000" edit_left="59" edit_top="83">
+        <dev id="96BBB512-DC42-4317-9174-5A5EB32AC9D5" name="LeftAR" poe="0" model="AR1220" settings="" system_mac="00-E0-FC-C4-69-BD" com_port="2000" bootmode="0" cx="32.000000" cy="29.000000" edit_left="59" edit_top="83">
             <slot number="slot17" isMainBoard="1">
                 <interface sztype="Ethernet" interfacename="GE" count="2" />
                 <interface sztype="Ethernet" interfacename="Ethernet" count="8" />
             </slot>
         </dev>
-        <dev id="E2FCC542-3ACC-482a-B5E1-47EA41AA5561" name="RightAR" poe="0" model="AR1220" settings="" system_mac="00-E0-FC-B2-4C-1B" com_port="2001" bootmode="1" cx="258.000000" cy="28.000000" edit_left="285" edit_top="82">
+        <dev id="E2FCC542-3ACC-482a-B5E1-47EA41AA5561" name="RightAR" poe="0" model="AR1220" settings="" system_mac="00-E0-FC-B2-4C-1B" com_port="2001" bootmode="0" cx="258.000000" cy="28.000000" edit_left="285" edit_top="82">
             <slot number="slot17" isMainBoard="1">
                 <interface sztype="Ethernet" interfacename="GE" count="2" />
                 <interface sztype="Ethernet" interfacename="Ethernet" count="8" />
